@@ -216,5 +216,6 @@ private:
 	bool m_attackFlag = false; //攻撃しているフラグ。
 	bool m_doNothingFlag = false; //何もしていないフラグ。
 	bool m_deathFlag = false;
+	int a = 0;
 };
 
