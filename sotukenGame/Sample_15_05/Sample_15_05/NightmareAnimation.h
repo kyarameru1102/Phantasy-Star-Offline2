@@ -10,8 +10,9 @@ const enum NightmAnim {
 	enScream,                  //™ôšK
 	enBasicAttack,             //UŒ‚
 	enClawAttack,              //’ÜUŒ‚
-	enHornattack,              //ŠpUŒ‚
+	enHornAttack,              //ŠpUŒ‚
 	enDefend,                  //–hŒä
+	enSleep,                   //‡–°
 	enGethit,                  //”íƒ_ƒ
 	enDie,                     //€–S
 	enNightmAnimClip_num
