@@ -10,3 +10,13 @@ NightmareAnimation::~NightmareAnimation()
 {
 
 }
+
+bool NightmareAnimation::Start()
+{
+	return true;
+}
+
+void NightmareAnimation::Update()
+{
+
+}

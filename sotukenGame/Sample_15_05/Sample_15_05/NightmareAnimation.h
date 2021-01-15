@@ -1,11 +1,17 @@
 #pragma once
 const enum NightmAnim {
-	enIdle,                    //‘Ò‹@
+	enIdle01,                   //‘Ò‹@01
+	enIdle02,                   //‘Ò‹@02
 	enWalk,                    //•à‚«
+	enWalkBack,                //Œã‚ë•à‚«
+	enWalkLeft,                //¶•à‚«
+	enWalkRight,               //‰E•à‚«
 	enRun,                     //‘–‚è
 	enScream,                  //™ôšK
-	enAttack,                  //UŒ‚
+	enBasicAttack,             //UŒ‚
+	enClawAttack,              //’ÜUŒ‚
 	enHornattack,              //ŠpUŒ‚
+	enDefend,                  //–hŒä
 	enGethit,                  //”íƒ_ƒ
 	enDie,                     //€–S
 	enNightmAnimClip_num
