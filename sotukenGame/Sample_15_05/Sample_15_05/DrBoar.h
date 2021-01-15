@@ -1,6 +1,7 @@
 #pragma once
 #include "Physics/Character/CharacterController.h"
 #include "EnemyAnimation.h"
+#include "BoarAnimation.h"
 #include "EnBase.h"
 #include "Physics/GhostObject.h"
 
@@ -72,7 +73,8 @@ private:
 	float				m_speedY = 0.0f;				//Y方向のスピード。
 	int					m_animState = enIdle;			//アニメーションの状態。
 	int					m_appearcolor = 0;				//配色No
-	EnemyAnimation*		m_enemyAnim = nullptr;			//アニメーションのロード。
+	//EnemyAnimation*		m_enemyAnim = nullptr;			//アニメーションのロード。
+	BoarAnimation*      m_boarAnim = nullptr;           //アニメーションのロード。
 	std::vector<int>	boarcolor = { 1,2,3,4 };		//配色決定。
 	bool				m_isAttack = false;				//攻撃しているか。
 	bool				m_ATKoff = false;				//一回の攻撃でダメージを一回だけ入れるためのフラグ。

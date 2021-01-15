@@ -8,37 +8,39 @@ DrBoar::DrBoar()
 DrBoar::~DrBoar()
 {
 	DeleteGO(m_skinModelRender);
-	DeleteGO(m_enemyAnim);
+	//DeleteGO(m_enemyAnim);
+	DeleteGO(m_boarAnim);
 }
 
 bool DrBoar::Start()
 {
 	//プレイヤーのアニメーションのインスタンス作成。
-	m_enemyAnim = NewGO<EnemyAnimation>(0, "enemyAnim");
+	//m_enemyAnim = NewGO<EnemyAnimation>(0, "enemyAnim");
+	m_boarAnim = NewGO<BoarAnimation>(0, "boarAnim");
 	//配色を決める。
 	m_appearcolor = boarcolor[rand() % boarcolor.size()];
 	//モデルの初期化
 	if (m_appearcolor == 1) {
 		m_skinModelRender = NewGO<SkinModelRender>(0);
-		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Blue/DrBoarBl.tkm", m_enemyAnim->GetAnimationClip(), enAnimationClip_num);
+		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Blue/DrBoarBl.tkm", m_boarAnim->GetAnimationClip(), enBoarAnimClip_num);
 		//m_position = { 300.0f, 0.0f, -100.0f };
 	}
 	else if (m_appearcolor == 2)
 	{
 		m_skinModelRender = NewGO<SkinModelRender>(0);
-		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Gold/DrBoarGo.tkm", m_enemyAnim->GetAnimationClip(), enAnimationClip_num);
+		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Gold/DrBoarGo.tkm", m_boarAnim->GetAnimationClip(), enBoarAnimClip_num);
 		//m_position = { 300.0f, 0.0f, 100.0f };
 	}
 	else if (m_appearcolor == 3)
 	{
 		m_skinModelRender = NewGO<SkinModelRender>(0);
-		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Green/DrBoarGr.tkm", m_enemyAnim->GetAnimationClip(), enAnimationClip_num);
+		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Green/DrBoarGr.tkm", m_boarAnim->GetAnimationClip(), enBoarAnimClip_num);
 		//m_position = { -300.0f, 0.0f, -100.0f };
 	}
 	else if (m_appearcolor == 4)
 	{
 		m_skinModelRender = NewGO<SkinModelRender>(0);
-		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Red/DrBoarRe.tkm", m_enemyAnim->GetAnimationClip(), enAnimationClip_num);
+		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Red/DrBoarRe.tkm", m_boarAnim->GetAnimationClip(), enBoarAnimClip_num);
 		//m_position = { -300.0f, 0.0f, 100.0f };
 	}
 	
