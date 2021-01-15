@@ -1,6 +1,7 @@
 #pragma once
-#include "Player.h"
-#include "EnBase.h"
+class Player;
+class EnBase;
+class PlayerAttackAnimation;
 #include "Physics/GhostObject.h"
 class Weapon : public IGameObject
 {
@@ -22,6 +23,10 @@ public:
 	/// 更新関数。
 	/// </summary>
 	void Update() override;
+	/// <summary>
+	/// 攻撃の当たり判定。
+	/// </summary>
+	void AttackHit();
 	/// <summary>
 	/// 座標を設定する。
 	/// </summary>
@@ -46,10 +51,11 @@ public:
 	{
 		m_boneNum = boneNo;
 	}
-	
+
 private:
 	Player* m_player = nullptr; //プレイヤーのインスタンス。
 	EnBase* m_drBoar = nullptr; //敵のインスタンス。
+	PlayerAttackAnimation* m_playerAttackAnim = nullptr; //プレイヤーの攻撃のインスタンス。
 	SkinModelRender* m_skimModelRender = nullptr; //スキンモデルレンダー。
 	Vector3 m_position = Vector3::Zero;//座標。
 	Quaternion m_rotation = Quaternion::Identity;//回転
@@ -57,4 +63,5 @@ private:
 	Vector3 m_scale = Vector3::Zero; //スケール。
 	int m_nextAttackNum = 0;
 	GhostObject m_ghostObj;
+	bool m_speAttackHit = false;
 };

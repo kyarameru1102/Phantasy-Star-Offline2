@@ -107,15 +107,28 @@ void PlayerAttackAnimation::SpecialAttackStateBlad()
 			m_player->SetAnimState(enSpecialAttack_02_blad);
 			//移動しない。
 			m_player->SetMoveSpeed(Vector3::Zero);
+			m_accumulateTimer++;
+			if (m_accumulateTimer >= m_accumulateTime) {
+				m_magnification += 0.5f;
+				m_accumulateTime += 60;
+				m_speed += 20.0f;
+				if (m_magnification >= 3.0f) {
+					m_magnification = 3.0f;
+					m_speed = 100.0f;
+				}
+			}
 		}
 		else {
 			//離した。
 			m_player->SetSpecialAttackFlag(true);
+			m_accumulateTimer = 0;
+			m_accumulateTime = 60;
 		}
 	}
 	if (m_player->GetSpecialAttackFlag() != false) {
 		//攻撃モーション。
 		m_player->SetAnimState(enSpecialAttack_03_blad);
+		m_player->SetmDoNothingFlag(true);
 		m_timer++;
 		m_player->SetMoveSpeed(Vector3::Zero);
 		if (m_timer > 10 && m_timer < 50) {
@@ -124,6 +137,7 @@ void PlayerAttackAnimation::SpecialAttackStateBlad()
 			m_speed -= 50.0f / 40.0f;
 			if (m_speed <= 0.0f) {
 				m_speed = 0.0f;
+				//m_player->SetSpecialAttackFlag(false);
 			}
 		}
 		if (!m_player->GetPlayerSkinModelRemder().GetisAnimationPlaing()) {
@@ -132,6 +146,7 @@ void PlayerAttackAnimation::SpecialAttackStateBlad()
 			m_specialAttackStartFlag = false;
 			m_speed = 50.0f;
 			m_timer = 0;
+			m_magnification = 1.0f;
 			AttackEnd();
 		}
 	}
@@ -192,7 +207,7 @@ void PlayerAttackAnimation::AttackEnd()
 	}
 	//m_attackAnimationFlag = false;
 	m_player->SetAttackAnimationFlag(false);
-	
+
 	attackTimer = 0;
 	m_attackNum = 0;
 	m_totalAttackAnimationTime = 0;
@@ -207,7 +222,7 @@ void PlayerAttackAnimation::Attack()
 	if (m_player->GetSpecialAttackState() == enBladState) {
 		SpecialAttackStateBlad();
 	}
-	else if (m_player->GetSpecialAttackState() == enSwordState){
+	else if (m_player->GetSpecialAttackState() == enSwordState) {
 		SpecialAttackStateSword();
 	}
 	else {

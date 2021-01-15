@@ -82,6 +82,8 @@ private:
 	bool m_specialAttackStartFlag = false;//特殊攻撃のスタートフラグ。
 	float m_speed = 50.0f;
 	int m_timer = 0;
-	
+	int m_accumulateTimer = 0; //溜めるタイマー。
+	int m_accumulateTime = 60; //溜める時間。
+	float m_magnification = 1.0f; //倍率。
 };
 

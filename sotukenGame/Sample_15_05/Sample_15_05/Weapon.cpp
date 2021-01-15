@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Weapon.h"
-
-
+#include "Player.h"
+#include "EnBase.h"
+#include "PlayerAttackAnimation.h"
 
 Weapon::Weapon()
 {
@@ -12,7 +13,36 @@ Weapon::~Weapon()
 {
 	DeleteGO(m_skimModelRender);
 }
-
+void Weapon::AttackHit()
+{
+	//敵との当たり判定をとる前に、敵がいるかどうかを調べる。
+	QueryGOs<EnBase>("drBoar", [&](EnBase * drBoar)->bool {
+		//敵のキャラコンを取得。
+		CharacterController& charaCon = *drBoar->GetCharaCon();
+		g_physics.ContactTestCharaCon(charaCon, [&](const btCollisionObject & collisionObject) {
+			if (m_ghostObj.IsSelf(collisionObject) == true) {
+				//当たっていたら、ダメージを与える。
+				drBoar->ReceiveDamage(m_player->GetmAtaackPow());
+				m_nextAttackNum++;
+				m_speAttackHit = true;
+			}
+			});
+		return true;
+		});
+	QueryGOs<EnBase>("drBoar2", [&](EnBase * drBoar)->bool {
+		//敵のキャラコンを取得。
+		CharacterController& charaCon = *drBoar->GetCharaCon();
+		g_physics.ContactTestCharaCon(charaCon, [&](const btCollisionObject & collisionObject) {
+			if (m_ghostObj.IsSelf(collisionObject) == true) {
+				//当たっていたら、ダメージを与える。
+				drBoar->ReceiveDamage(m_player->GetmAtaackPow());
+				m_nextAttackNum++;
+				m_speAttackHit = true;
+			}
+			});
+		return true;
+		});
+}
 bool Weapon::Start()
 {
 	//モデルの初期化。
@@ -27,12 +57,13 @@ bool Weapon::Start()
 	m_skimModelRender->SetPosition(m_position);
 	m_skimModelRender->SetRotation(m_rotation);
 	m_player = FindGO<Player>("player");
+	m_playerAttackAnim = FindGO<PlayerAttackAnimation>("playerAttackAnimation");
+	m_nextAttackNum = m_playerAttackAnim->GetAttackNum();
 	//ゴースト作成。
-	m_nextAttackNum = m_player->GetAttackNum();
 	m_ghostObj.CreateBox(
 		m_position,
 		m_rotation,
-		{ 500.0f, 50.0f, 50.0f }
+		{ 500.0f, 100.0f, 100.0f }
 	);
 	return true;
 }
@@ -60,35 +91,22 @@ void Weapon::Update()
 
 	if (m_player->GetAttackFlag() != false) {
 		//プレイヤーが攻撃している。
-		if (m_nextAttackNum == m_player->GetAttackNum()) {
+		if (m_nextAttackNum == m_playerAttackAnim->GetAttackNum()) {
 			//攻撃フラグが立っている間、毎フレームダメージを与えないようにする。
-			//敵との当たり判定をとる前に、敵がいるかどうかを調べる。
-			QueryGOs<EnBase>("drBoar", [&](EnBase * drBoar)->bool {
-				//敵のキャラコンを取得。
-				CharacterController& charaCon = *drBoar->GetCharaCon();
-				g_physics.ContactTestCharaCon(charaCon, [&](const btCollisionObject & collisionObject) {
-					if (m_ghostObj.IsSelf(collisionObject) == true) {
-						//当たっていたら、ダメージを与える。
-						drBoar->ReceiveDamage(m_player->GetmAtaackPow());
-					}
-				});
-				return true;
-			});
-			QueryGOs<EnBase>("drBoar2", [&](EnBase* drBoar)->bool {
-				//敵のキャラコンを取得。
-				CharacterController& charaCon = *drBoar->GetCharaCon();
-				g_physics.ContactTestCharaCon(charaCon, [&](const btCollisionObject& collisionObject) {
-					if (m_ghostObj.IsSelf(collisionObject) == true) {
-						//当たっていたら、ダメージを与える。
-						drBoar->ReceiveDamage(m_player->GetmAtaackPow());
-					}
-					});
-				return true;
-				});
-			m_nextAttackNum++;
+			AttackHit();
+			//m_nextAttackNum++;
 		}
 	}
 	else {
-		m_nextAttackNum = m_player->GetAttackNum();
+		m_nextAttackNum = m_playerAttackAnim->GetAttackNum();
+	}
+
+	if (m_player->GetSpecialAttackFlag() != false) {
+		if (m_speAttackHit != true) {
+			AttackHit();
+		}
+	}
+	else {
+		m_speAttackHit = false;
 	}
 }
