@@ -256,8 +256,13 @@
     <ClCompile Include="BoarAnimation.cpp">
       <Filter>ソースファイル\Game\Charactor\Enemy</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="NightmareAnimation.cpp">
       <Filter>ソースファイル\Game\Charactor\Enemy</Filter>
+=======
+    <ClCompile Include="PlayerAttackAnimation.cpp">
+      <Filter>ソースファイル\Game\Charactor\Player</Filter>
+>>>>>>> 448480f4ba85113178b20661f407f8a82611e5a1
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -546,8 +551,13 @@
     <ClInclude Include="BoarAnimation.h">
       <Filter>ソースファイル\Game\Charactor\Enemy</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="NightmareAnimation.h">
       <Filter>ソースファイル\Game\Charactor\Enemy</Filter>
+=======
+    <ClInclude Include="PlayerAttackAnimation.h">
+      <Filter>ソースファイル\Game\Charactor\Player</Filter>
+>>>>>>> 448480f4ba85113178b20661f407f8a82611e5a1
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
