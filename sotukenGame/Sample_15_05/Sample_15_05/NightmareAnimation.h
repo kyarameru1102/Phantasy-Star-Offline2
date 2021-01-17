@@ -15,7 +15,7 @@ const enum NightmAnim {
 	enSleep,                   //睡眠
 	enGethit,                  //被ダメ
 	enDie,                     //死亡
-	enNightmAnimClip_num
+	enNightmAnimClip_num       //アニメーションの数
 };
 class NightmareAnimation : public IGameObject
 {
