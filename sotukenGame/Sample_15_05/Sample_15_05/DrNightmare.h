@@ -1,6 +1,7 @@
 #pragma once
 class DrNightmare
 {
+public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>

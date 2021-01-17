@@ -1,6 +1,7 @@
 #pragma once
 class DrSoulEater
 {
+ public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>

@@ -1,14 +1,14 @@
 #pragma once
-class DrUsurper
+class SoulEaterAnimation
 {
- public:
+public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	DrUsurper();
+	SoulEaterAnimation();
 	/// <summary>
-	/// デストラクタ
+	/// コンストラクタ
 	/// </summary>
-	~DrUsurper();
+	~SoulEaterAnimation();
 };
 

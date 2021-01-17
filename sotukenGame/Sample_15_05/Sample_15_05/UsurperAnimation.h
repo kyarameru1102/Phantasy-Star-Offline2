@@ -1,14 +1,14 @@
 #pragma once
-class DrUsurper
+class UsurperAnimation
 {
  public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	DrUsurper();
+	UsurperAnimation();
 	/// <summary>
-	/// デストラクタ
+	/// コンストラクタ
 	/// </summary>
-	~DrUsurper();
+	~UsurperAnimation();
 };
 

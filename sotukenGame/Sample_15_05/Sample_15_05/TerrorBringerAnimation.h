@@ -1,14 +1,14 @@
 #pragma once
-class DrTerrorBringer
+class TerrorBringerAnimation
 {
 public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	DrTerrorBringer();
+	TerrorBringerAnimation();
 	/// <summary>
-	/// デストラクタ
+	/// コンストラクタ
 	/// </summary>
-	~DrTerrorBringer();
+	~TerrorBringerAnimation();
 };
 
