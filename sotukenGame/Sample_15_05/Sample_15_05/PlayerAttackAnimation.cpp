@@ -52,7 +52,7 @@ void PlayerAttackAnimation::SetAttackAnimationTime()
 }
 void PlayerAttackAnimation::NormalAttack()
 {
-	m_player->SetAttackAngleFlag(true);
+	/*m_player->SetAttackAngleFlag(true);*/
 	if (attackTimer >= m_continuousAttackTime) {
 		//m_moveSpeed = Vector3::Zero;
 		m_player->SetMoveSpeed(Vector3::Zero);
@@ -66,6 +66,7 @@ void PlayerAttackAnimation::NormalAttack()
 		//m_moveSpeed = m_dir * 5.0f;
 		//m_attackFlag = true;
 		m_player->SetAttackFlag(true);
+		m_player->SetAttackAngleFlag(true);
 
 
 	}
@@ -153,7 +154,9 @@ void PlayerAttackAnimation::SpecialAttackStateBlad()
 }
 void PlayerAttackAnimation::SpecialAttackStateSword()
 {
-
+	m_player->SetSpecialAttackFlag(false);
+	m_player->SetSpecialAttackState(enNormalState);
+	AttackEnd();
 }
 void PlayerAttackAnimation::AttackFlag(int attackTime01_blad, int* attackAnimNum, int attackTime01_sword)
 {
@@ -228,46 +231,6 @@ void PlayerAttackAnimation::Attack()
 	else {
 		NormalAttack();
 	}
-	//if (m_player->GetAttackAnimationFlag() != false) {
-		//m_attackAngleFlag = true;
-		//m_player->SetAttackAngleFlag(true);
-		//if (attackTimer >= m_continuousAttackTime) {
-		//	//m_moveSpeed = Vector3::Zero;
-		//	m_player->SetMoveSpeed(Vector3::Zero);
-
-		//	//m_attackFlag = false;
-		//	m_player->SetAttackFlag(false);
-		//}
-		//else {
-		//	Vector3 moveSpeed = m_player->GetDir() * 5.0f;
-		//	m_player->SetMoveSpeed(moveSpeed);
-		//	//m_moveSpeed = m_dir * 5.0f;
-		//	//m_attackFlag = true;
-		//	m_player->SetAttackFlag(true);
-
-
-		//}
-		////攻撃タイマーを加算。
-		//attackTimer++;
-		////XボタンかYボタンで初期攻撃アニメーションを決める。
-		//if (m_player->GetAttackXOrY() == attackX) {
-		//	//m_animState = enAttack01_blad;
-		//	m_player->SetAnimState(enAttack01_blad);
-		//}
-		//else if (m_player->GetAttackXOrY() == attackY) {
-		//	//m_animState = enAttack06_blad;
-		//	m_player->SetAnimState(enAttack06_blad);
-		//}
-		////m_attackNum×2を加算した番号のアニメーションを流す。
-		//int animState = m_player->GetAnimState();
-		//animState += m_attackNum * 2;
-		//m_player->SetAnimState(animState);
-		////m_animState += m_attackNum * 2;
-		//if (attackTimer > m_totalAttackAnimationTime) {
-		//	//攻撃アニメーション終了。
-		//	AttackEnd();
-		//}
-	//}
 }
 void PlayerAttackAnimation::SpecialAttackEnd()
 {

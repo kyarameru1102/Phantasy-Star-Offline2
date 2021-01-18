@@ -157,8 +157,8 @@ void Player::Rotation()
 		fabsf(m_moveSpeed.z) > 0.0f ||
 		fabsf(m_moveSpeed.x) > 0.0f) {
 		if (
-			m_attackFlag != true &&
-			m_kaihiFlag != true &&
+			m_attackFlag != true && //UŒ‚‚µ‚Ä‚¢‚È‚¢B
+			m_kaihiFlag != true &&//‰ñ”ð
 			m_attackAngleFlag != true &&
 			m_changeAnimFlag != true &&
 			m_playerHP >= m_beforeHp &&
