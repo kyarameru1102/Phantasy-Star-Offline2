@@ -1,23 +1,23 @@
 #pragma once
 #include "Physics/Character/CharacterController.h"
-#include "NightmareAnimation.h"
+#include "TerrorBringerAnimation.h"
 #include "EnBase.h"
 #include "Physics/GhostObject.h"
 
 /// <summary>
-/// ドラゴンナイトメアクラス
+/// ドラゴンテラーブリンガークラス
 /// </summary>
-class DrNightmare : public EnBase
+class DrTerrorBringer : public EnBase
 {
 public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	DrNightmare();
+	DrTerrorBringer();
 	/// <summary>
 	/// デストラクタ
 	/// </summary>
-	~DrNightmare();
+	~DrTerrorBringer();
 
 	/// <summary>
 	/// スタート関数。
@@ -29,35 +29,6 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	void Update();
-    
-	/// <summary>
-	/// プレイヤーに向かっていく関数。
-	/// </summary>
-	void Move();
-
-	/// <summary>
-	/// プレイヤーの方向に体を向ける関数。
-	/// </summary>
-	void Turn();
-
-	/// <summary>
-	/// 攻撃関数。
-	/// </summary>
-	void Attack();
-	/// <summary>
-	/// 死。
-	/// </summary>
-	void Die();
-	void ReceiveDamage(int damage) override
-	{
-		m_hp -= damage;
-		m_status = GetDamage_state;
-	}
-
-	const int& GetDeathCount()const
-	{
-		return m_deathCount;
-	}
 private:
 	/// <summary>
 	/// エネミーのステート。
@@ -66,7 +37,7 @@ private:
 		Idle_state,
 		Walk_state,
 		Run_state,
-		Attack_state,
+		Attack_state,	
 		GetDamage_state,
 		Die_state
 	};
@@ -76,7 +47,7 @@ private:
 	float				m_speedY = 0.0f;				//Y方向のスピード。
 	int					m_animState = enIdle01;			//アニメーションの状態。
 	int					m_appearcolor = 0;				//配色No
-	NightmareAnimation* m_nightmAnim = nullptr;           //アニメーションのロード。
+	TerrorBringerAnimation* m_TerrorbAnim = nullptr;    //アニメーションのロード。
 	std::vector<int>	boarcolor = { 1,2,3,4 };		//配色決定。
 	bool				m_isAttack = false;				//攻撃しているか。
 	bool				m_ATKoff = false;				//一回の攻撃でダメージを一回だけ入れるためのフラグ。

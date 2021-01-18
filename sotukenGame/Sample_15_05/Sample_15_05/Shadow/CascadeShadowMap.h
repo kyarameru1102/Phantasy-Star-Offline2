@@ -130,14 +130,14 @@ public:
 	}
 	static const int SHADOWMAP_NUM = 3;
 private:
-	Vector3 m_lightCameraPosition = Vector3(300.0f, 300.0f, -300.0f);		//ライトカメラの座標	
+	Vector3 m_lightCameraPosition = Vector3(-300.0f, 300.0f, -300.0f);		//ライトカメラの座標	
 	Vector3 m_lightCamerataraget = Vector3(0.0f, 0.0f, 0.0f);		//ライトカメラの注視点
 	Matrix m_lightViewMatrix;			//ライトビュー行列
 	Matrix m_lightProjMatrix;			//ライトプロジェクション行列
 	RenderTarget m_shadowMapRT[SHADOWMAP_NUM];			//シャドウマップのレンダリングターゲット
 	Matrix m_lightVieProjMatrix[SHADOWMAP_NUM];			//各シャドウマップのビュープロジェクション行列
 	std::vector<Model*> m_shadowCaters;		//シャドウキャスターのリスト
-	Vector3 m_lightDir = Vector3(-0.6396f,-0.6396f,-0.4264f);
+	Vector3 m_lightDir = Vector3(0.6396f,-0.6396f,0.4264f);
 	float m_lightHeight = 2000.0f;
 	int m_shadowMapNumber = 0;
 	float m_farList[SHADOWMAP_NUM];

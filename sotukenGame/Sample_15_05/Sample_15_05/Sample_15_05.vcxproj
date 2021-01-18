@@ -207,6 +207,9 @@
     <ClCompile Include="BossEnBase.cpp" />
     <ClCompile Include="DrBoar.cpp" />
     <ClCompile Include="DrNightmare.cpp" />
+    <ClCompile Include="DrSoulEater.cpp" />
+    <ClCompile Include="DrTerrorBringer.cpp" />
+    <ClCompile Include="DrUsurper.cpp" />
     <ClCompile Include="EnArmyGenerator.cpp" />
     <ClCompile Include="EnBase.cpp" />
     <ClCompile Include="EnBehaviorTest.cpp" />
@@ -215,6 +218,7 @@
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="IStage.cpp" />
+    <ClCompile Include="NightmareAnimation.cpp" />
     <ClCompile Include="Physics\GhostObject.cpp" />
     <ClCompile Include="GroupCoreGenerator.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -241,6 +245,7 @@
     <ClCompile Include="Shadow\IShadowMap.cpp" />
     <ClCompile Include="Shadow\ShadowMap.cpp" />
     <ClCompile Include="SkinModelRender.cpp" />
+    <ClCompile Include="SoulEaterAnimation.cpp" />
     <ClCompile Include="SpriteRender.cpp" />
     <ClCompile Include="Stage1.cpp" />
     <ClCompile Include="Stage2.cpp" />
@@ -252,7 +257,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="system\system.cpp" />
+    <ClCompile Include="TerrorBringerAnimation.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="UsurperAnimation.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +313,9 @@
     <ClInclude Include="BossEnBase.h" />
     <ClInclude Include="DrBoar.h" />
     <ClInclude Include="DrNightmare.h" />
+    <ClInclude Include="DrSoulEater.h" />
+    <ClInclude Include="DrTerrorBringer.h" />
+    <ClInclude Include="DrUsurper.h" />
     <ClInclude Include="EnArmyGenerator.h" />
     <ClInclude Include="EnBase.h" />
     <ClInclude Include="EnBehaviorTest.h" />
@@ -314,6 +324,7 @@
     <ClInclude Include="Fade.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="IStage.h" />
+    <ClInclude Include="NightmareAnimation.h" />
     <ClInclude Include="Physics\GhostObject.h" />
     <ClInclude Include="GroupCoreGenerator.h" />
     <ClInclude Include="Menu.h" />
@@ -342,13 +353,16 @@
     <ClInclude Include="Shadow\IShadowMap.h" />
     <ClInclude Include="Shadow\ShadowMap.h" />
     <ClInclude Include="SkinModelRender.h" />
+    <ClInclude Include="SoulEaterAnimation.h" />
     <ClInclude Include="SpriteRender.h" />
     <ClInclude Include="Stage1.h" />
     <ClInclude Include="Stage2.h" />
     <ClInclude Include="Stage3.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system\system.h" />
+    <ClInclude Include="TerrorBringerAnimation.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="UsurperAnimation.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="RenderMode.h" />

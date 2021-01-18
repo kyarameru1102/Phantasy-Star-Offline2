@@ -1,23 +1,23 @@
 #pragma once
 #include "Physics/Character/CharacterController.h"
-#include "NightmareAnimation.h"
+#include "SoulEaterAnimation.h"
 #include "EnBase.h"
 #include "Physics/GhostObject.h"
 
 /// <summary>
-/// ドラゴンナイトメアクラス
+/// ドラゴンソウルイータークラス
 /// </summary>
-class DrNightmare : public EnBase
+class DrSoulEater : public EnBase
 {
-public:
+ public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	DrNightmare();
+	DrSoulEater();
 	/// <summary>
-	/// デストラクタ
+	/// コンストラクタ
 	/// </summary>
-	~DrNightmare();
+	~DrSoulEater();
 
 	/// <summary>
 	/// スタート関数。
@@ -29,7 +29,7 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	void Update();
-    
+
 	/// <summary>
 	/// プレイヤーに向かっていく関数。
 	/// </summary>
@@ -74,9 +74,9 @@ private:
 	int					m_status = Idle_state;			//状態。
 	int					changeTimer = 0;				//アニメーション変更タイマー。
 	float				m_speedY = 0.0f;				//Y方向のスピード。
-	int					m_animState = enIdle01;			//アニメーションの状態。
+	int					m_animState = enIdle;			//アニメーションの状態。
 	int					m_appearcolor = 0;				//配色No
-	NightmareAnimation* m_nightmAnim = nullptr;           //アニメーションのロード。
+	SoulEaterAnimation* m_souleAnim = nullptr;           //アニメーションのロード。
 	std::vector<int>	boarcolor = { 1,2,3,4 };		//配色決定。
 	bool				m_isAttack = false;				//攻撃しているか。
 	bool				m_ATKoff = false;				//一回の攻撃でダメージを一回だけ入れるためのフラグ。

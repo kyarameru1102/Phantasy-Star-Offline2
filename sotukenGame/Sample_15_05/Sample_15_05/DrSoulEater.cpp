@@ -1,50 +1,41 @@
 #include "stdafx.h"
-#include "DrBoar.h"
+#include "DrSoulEater.h"
 #include "Player.h"
-DrBoar::DrBoar()
+
+DrSoulEater::DrSoulEater()
 {
+
 }
 
-DrBoar::~DrBoar()
+DrSoulEater::~DrSoulEater()
 {
 	DeleteGO(m_skinModelRender);
-	//DeleteGO(m_enemyAnim);
-	DeleteGO(m_boarAnim);
+	DeleteGO(m_souleAnim);
 }
 
-bool DrBoar::Start()
+bool DrSoulEater::Start()
 {
-	//ドラゴンボアのアニメーションのインスタンス作成。
-	//m_enemyAnim = NewGO<EnemyAnimation>(0, "enemyAnim");
-	m_boarAnim = NewGO<BoarAnimation>(0, "boarAnim");
+	//ドラゴンソウルイーター
+	m_souleAnim = NewGO<SoulEaterAnimation>(0);
 	//配色を決める。
 	m_appearcolor = boarcolor[rand() % boarcolor.size()];
 	//モデルの初期化
 	if (m_appearcolor == 1) {
 		m_skinModelRender = NewGO<SkinModelRender>(0);
-		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Blue/DrBoarBl.tkm", m_boarAnim->GetAnimationClip(), enBoarAnimClip_num);
-		//m_position = { 300.0f, 0.0f, -100.0f };
+		m_skinModelRender->Init("Assets/modelData/enemy/DragonSoulEater/blue/DrSoEaBl.tkm", m_souleAnim->GetAnimationClip(), enSoulEAnimClip_num);
 	}
-	else if (m_appearcolor == 2)
-	{
+	else if (m_appearcolor == 2) {
 		m_skinModelRender = NewGO<SkinModelRender>(0);
-		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Gold/DrBoarGo.tkm", m_boarAnim->GetAnimationClip(), enBoarAnimClip_num);
-		//m_position = { 300.0f, 0.0f, 100.0f };
+		m_skinModelRender->Init("Assets/modelData/enemy/DragonSoulEater/green/DrSoEaGr.tkm", m_souleAnim->GetAnimationClip(), enSoulEAnimClip_num);
 	}
-	else if (m_appearcolor == 3)
-	{
+	else if (m_appearcolor == 3) {
 		m_skinModelRender = NewGO<SkinModelRender>(0);
-		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Green/DrBoarGr.tkm", m_boarAnim->GetAnimationClip(), enBoarAnimClip_num);
-		//m_position = { -300.0f, 0.0f, -100.0f };
+		m_skinModelRender->Init("Assets/modelData/enemy/DragonSoulEater/purple/DrSoEaPu.tkm", m_souleAnim->GetAnimationClip(), enSoulEAnimClip_num);
 	}
-	else if (m_appearcolor == 4)
-	{
+	else if (m_appearcolor == 4) {
 		m_skinModelRender = NewGO<SkinModelRender>(0);
-		m_skinModelRender->Init("Assets/modelData/enemy/DragonBoar/Red/DrBoarRe.tkm", m_boarAnim->GetAnimationClip(), enBoarAnimClip_num);
-		//m_position = { -300.0f, 0.0f, 100.0f };
+		m_skinModelRender->Init("Assets/modelData/enemy/DragonSoulEater/red/DrSoEaRe.tkm", m_souleAnim->GetAnimationClip(), enSoulEAnimClip_num);
 	}
-	
-	//.SetRotationDegY(90.0f);
 	//キャラコン初期化。
 	m_charaCon.Init(145.0f, 200.0f, m_position);
 	Vector3 ghostPos = m_position;
@@ -55,7 +46,8 @@ bool DrBoar::Start()
 	return true;
 }
 
-void DrBoar::Move()
+
+void DrSoulEater::Move()
 {
 	m_status = Walk_state;
 	Vector3 playerLen = m_toPlayer;
@@ -65,14 +57,14 @@ void DrBoar::Move()
 	m_position = m_charaCon.Execute(1.0f, m_movespeed);
 }
 
-void DrBoar::Turn()
+void DrSoulEater::Turn()
 {
 	Vector3 playerLen = m_player->GetPosition() - m_position;
 	float angle = atan2(playerLen.x, playerLen.z);
 	m_rotation.SetRotation(Vector3::AxisY, angle);
 }
 
-void DrBoar::Attack()
+void DrSoulEater::Attack()
 {
 	if (m_toPlayer.Length() <= 200.0f)
 	{
@@ -88,11 +80,11 @@ void DrBoar::Attack()
 					}
 				}
 			}
-		});
+			});
 	}
 }
 
-void DrBoar::Die()
+void DrSoulEater::Die()
 {
 	if (m_hp <= 0)
 	{
@@ -107,7 +99,7 @@ void DrBoar::Die()
 	}
 }
 
-void DrBoar::Update()
+void DrSoulEater::Update()
 {
 	//毎フレーム距離はかる。
 	m_toPlayer = m_player->GetPosition() - m_position;
@@ -134,7 +126,7 @@ void DrBoar::Update()
 		m_animState = enWalk;
 		break;
 	case Attack_state:
-		m_animState = enHornattack;
+		m_animState = enBasicAttack;
 		m_count++;
 		m_isAttack = true;
 		if (!m_skinModelRender->GetisAnimationPlaing()) {
@@ -163,7 +155,7 @@ void DrBoar::Update()
 	default:
 		break;
 	}
-	
+
 	if (m_movespeed.Length() >= 0.0f) {
 		m_dir = m_movespeed;
 		m_dir.Normalize();
@@ -180,5 +172,4 @@ void DrBoar::Update()
 	//デバッグ用。
 	printf_s("AnimationState_%d\n", m_animState);
 	printf_s("EnemyHP_%d\n", m_hp);
-	
 }
