@@ -10,3 +10,14 @@ DrTerrorBringer::~DrTerrorBringer()
 {
 
 }
+
+bool DrTerrorBringer::Start()
+{
+
+	return true;
+}
+
+void DrTerrorBringer::Update()
+{
+
+}

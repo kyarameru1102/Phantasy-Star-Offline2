@@ -14,7 +14,7 @@ DrBoar::~DrBoar()
 
 bool DrBoar::Start()
 {
-	//プレイヤーのアニメーションのインスタンス作成。
+	//ドラゴンボアのアニメーションのインスタンス作成。
 	//m_enemyAnim = NewGO<EnemyAnimation>(0, "enemyAnim");
 	m_boarAnim = NewGO<BoarAnimation>(0, "boarAnim");
 	//配色を決める。

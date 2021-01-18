@@ -10,5 +10,6 @@ class DrUsurper
 	/// デストラクタ
 	/// </summary>
 	~DrUsurper();
+
 };
 
